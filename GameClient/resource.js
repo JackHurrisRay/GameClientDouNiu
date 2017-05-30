@@ -207,7 +207,7 @@ var gResource = [
 ];
 
 
-const IP_ADDRESS =
+var IP_ADDRESS =
     "ws://59.110.30.245:2017";
     //"ws://192.168.3.17:2017";
 
