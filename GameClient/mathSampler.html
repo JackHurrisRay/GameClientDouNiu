@@ -1,0 +1,59 @@
+<head></head>
+
+<body>
+
+<script type="application/javascript">
+
+    function createValue()
+    {
+        var _h = Math.floor( Math.random() * 333 + Math.random() * 77 + (new Date).getTime() ) % 50;
+
+        if( _h == 0 || _h < 10 )
+        {
+            return createValue();
+        }
+
+        return _h;
+    };
+
+    function createPlus()
+    {
+        var _h = Math.random();
+
+        if( _h > 0.5 )
+        {
+            return "+";
+        }
+        else
+        {
+            return "-";
+        }
+    };
+
+    var Sentence =
+            function()
+            {
+                var _h =
+                        createValue().toString() + createPlus() +
+                        createValue().toString() + createPlus() +
+                        createValue().toString() + createPlus() +
+                        createValue().toString();
+
+                return _h;
+            };
+
+    var data = "Lei Tao Luan's Homework \n";
+
+    for( var i=0; i<100; i++ )
+    {
+        data = data + "                 \n\t";
+        data = data + Sentence() + " = ?   \n\t";
+    }
+
+    document.write( data );
+
+</script>
+
+</body>
+
+
