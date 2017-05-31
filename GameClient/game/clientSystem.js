@@ -74,12 +74,12 @@ var _checkUserData = null;
 if( _userData != null && _userData.ID != null && _userData.IMG != null && _userData.NICKNAME != null && _userData.OPENID != null )
 {
     _checkUserData = extendDeep(_userData);
-
 }
 
 if( !_checkUserData )
 {
     _checkUserData = wx_data;
+    //alert(JSON.stringify(wx_data));
 }
 
 const _testSelected =
