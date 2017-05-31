@@ -635,7 +635,7 @@ var clientSystem =
                                         _player.index_in_room = _msgData.player_index_in_room;
                                         _player.key = _msgData.player_key;
                                         _player.nickname = _msgData.player_nickname;
-                                        _player.img_url  = WX_IMG_PATH + _player["player_key"];//"game_source/"+_player.key+"/img_account";
+                                        _player.img_url  = WX_IMG_PATH + _msgData["player_key"];//"game_source/"+_player.key+"/img_account";
 
                                         _player.game_room_status = _msgData["room_game_status"];
                                         _player.game_player_status = _msgData["player_game_status"];
