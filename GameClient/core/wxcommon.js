@@ -5,58 +5,79 @@
 
 if(wx_data && wx_data.ticket)
 {
-    const wx_ticket = wx_data.ticket;
+    var wx_ticket = wx_data.ticket;
+    var _wx_app_array =
+        [
+            'checkJsApi',
+            'hideMenuItems',
+            'showMenuItems',
+            'hideOptionMenu',
+            'showOptionMenu',
+        ];
+
+    wx_ticket.jsApiList.concat(_wx_app_array);
 
     function initWxCommon()
     {
         wx.config(wx_ticket);
 
-        wx.ready(
-            function()
-            {
-                console.log('wx success');
-                //wxShareAppMsg();
-            }
-        );
+        wx.ready(function(){
 
-        wx.error(
-            function(res)
-            {
-                console.log('wx failed:'+res.errMsg);
-            }
-        );
+            wx.onMenuShareAppMessage(
+                {
+                    title:"极品斗牛",
+                    desc:"最好玩的桌面扑克游戏",
+                    link:"http://huyukongjian.cn/auth_douniu",
+                    imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
+                    type:null,
+                    dataUrl:null,
+                    success:function()
+                    {
+                        return;
+                    },
+                    cacel:function()
+                    {
+                        return;
+                    }
+                }
+            );
+
+            wx.error(
+                function(res)
+                {
+                    console.log('wx failed:'+res.errMsg);
+                }
+            );
+
+            wxShareAppMsg();
+
+        });
     }
 
-    try
-    {
-        initWxCommon();
-    }
-    catch(e)
-    {
-
-    }
-
+    initWxCommon();
 }
 
 function wxShareAppMsg()
 {
-    wx.onMenuShareAppMessage(
-        {
-            title:"极品斗牛",
-            desc:"最好玩的桌面扑克游戏",
-            link:"http://huyukongjian.cn/auth_douniu",
-            imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
-            type:null,
-            dataUrl:null,
-            success:function()
-            {
-                return;
-            },
-            cacel:function()
-            {
-                return;
-            }
+    wx.showMenuItems({
+        menuList: [
+            'menuItem:share:appMessage',
+            'menuItem:share:timeline', // 分享到朋友圈
+            'menuItem:copyUrl' // 复制链接
+        ],
+        success: function (res) {
+            //alert('已显示“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+            console.log(JSON.stringify(res));
+        },
+        fail: function (res) {
+            //alert(JSON.stringify(res));
+            console.log(JSON.stringify(res));
         }
-    );
+    });
+
+    //wx.showOptionMenu();
+
 }
+
+
 
