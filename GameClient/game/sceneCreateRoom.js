@@ -536,7 +536,8 @@ var sceneCreateRoom = cc.Scene.extend({
                                 },
                                 function (touch, event, target) {
                                     ////
-
+                                    wxShareAppMsg();
+                                    cc.log('press share app');
                                 },
                                 function (touch, event, target) {
 
