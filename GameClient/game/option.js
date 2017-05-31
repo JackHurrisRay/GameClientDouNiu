@@ -86,14 +86,17 @@ var optionSys =
                     },
                 };
 
-                if( OPTIONS.SOUND_MUSIC == true || OPTIONS.SOUND_MUSIC == false )
+                if( OPTIONS )
                 {
-                    _instance._switchMusic(OPTIONS.SOUND_MUSIC);
-                }
+                    if( OPTIONS.SOUND_MUSIC == true || OPTIONS.SOUND_MUSIC == false )
+                    {
+                        _instance._switchMusic(OPTIONS.SOUND_MUSIC);
+                    }
 
-                if( OPTIONS.SOUND_EFFECT == true || OPTIONS.SOUND_EFFECT == false )
-                {
-                    _instance._switchSound(OPTIONS.SOUND_EFFECT);
+                    if( OPTIONS.SOUND_EFFECT == true || OPTIONS.SOUND_EFFECT == false )
+                    {
+                        _instance._switchSound(OPTIONS.SOUND_EFFECT);
+                    }
                 }
 
                 return _instance;
