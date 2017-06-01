@@ -504,6 +504,7 @@ var sceneRoom = cc.Scene.extend(
             _BUTTON_CANCEL = this.BUTTON_CANCEL;
 
             ////
+            /*
             this.BUTTON_WECHAT = new uiTouchSprite(
                 null,null,
                 function(ref,event)
@@ -516,7 +517,9 @@ var sceneRoom = cc.Scene.extend(
             this.BUTTON_WECHAT.setAnchorPoint(1.0, 0.0);
             this.BUTTON_WECHAT.setPosition(SCREEN_SIZE.WIDTH - 24 - 96, 24.0);
             this.UI_NODE.addChild( this.BUTTON_WECHAT );
+            */
 
+            ////////
             this.PANEL_CHAT = new chatPanel();
             this.addChild(this.PANEL_CHAT);
 
@@ -781,7 +784,7 @@ var sceneRoom = cc.Scene.extend(
             this.DIALOG_TOTAL_RESULT = new dialogTotalResult;
             this.BACKGROUND.addChild(this.DIALOG_TOTAL_RESULT);
 
-            this.BUTTON_WECHAT.setVisible(true);
+            //this.BUTTON_WECHAT.setVisible(true);
 
             ////////
             this.BACKGROUND.addChild(this.CHAT_UI_NODE);
@@ -1110,7 +1113,7 @@ var sceneRoom = cc.Scene.extend(
             ////
             if( player_data.game_room_status != ENUM_GAME_PLAYER_STATUS.EPS_NONE )
             {
-                this.BUTTON_WECHAT.setVisible(false);
+                //this.BUTTON_WECHAT.setVisible(false);
                 this.TIP.setVisible(false);
                 this.INFO_NODE.setVisible(true);
 

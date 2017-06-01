@@ -517,7 +517,7 @@ var sceneCreateRoom = cc.Scene.extend({
                         var _frame_button =
                             [
                                 cc.spriteFrameCache.getSpriteFrame("room_manage_cell_button_enter.png"),
-                                cc.spriteFrameCache.getSpriteFrame("room_manage_cell_button_invite.png"),
+                                //cc.spriteFrameCache.getSpriteFrame("room_manage_cell_button_invite.png"),
                                 cc.spriteFrameCache.getSpriteFrame("room_manage_cell_button_delete.png")
                             ];
 
@@ -534,11 +534,12 @@ var sceneCreateRoom = cc.Scene.extend({
                                         }
                                     );
                                 },
+                                /*
                                 function (touch, event, target) {
                                     ////
-                                    wxShareAppMsg();
                                     cc.log('press share app');
                                 },
+                                */
                                 function (touch, event, target) {
 
                                     ////
@@ -573,10 +574,11 @@ var sceneCreateRoom = cc.Scene.extend({
                                 );
 
                             _button._listener.swallowTouches = false;
-
                             _button.initWithSpriteFrame(_frame_button[i]);
+
                             _button.setScale(0.625);
-                            _button.setPosition(873 - 112 * (2-i), 90);
+                            _button.setPosition(873 - 112 * (1-i), 90);
+
                             this.addChild(_button);
                         }
 

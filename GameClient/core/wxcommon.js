@@ -6,22 +6,44 @@
 if(wx_data && wx_data.ticket)
 {
     var wx_ticket = wx_data.ticket;
-    var _wx_app_array =
-        [
-            'checkJsApi',
-            'hideMenuItems',
-            'showMenuItems',
-            'hideOptionMenu',
-            'showOptionMenu',
-        ];
-
-    wx_ticket.jsApiList.concat(_wx_app_array);
 
     function initWxCommon()
     {
         wx.config(wx_ticket);
 
         wx.ready(function(){
+
+            wx.checkJsApi(
+                {
+                    jsApiList:wx_ticket.jsApiList,
+                    success:function(res)
+                    {
+                        console.log(JSON.stringify(res));
+                    }
+                }
+            );
+
+            wx.hideAllNonBaseMenuItem();
+
+            wx.hideMenuItems({
+                menuList:[
+                    'menuItem:share:weiboApp',
+                    'menuItem:favorite',
+                    'menuItem:editTag',
+                    'menuItem:delete',
+                    'menuItem:openWithSafari',
+                    'menuItem:share:email',
+                    'menuItem:share:brand',
+                ]
+            });
+
+            wx.showMenuItems({
+                menuList: [
+                    'menuItem:share:appMessage',
+                    'menuItem:share:timeline', // 分享到朋友圈
+                    'menuItem:copyUrl' // 复制链接
+                ]
+            });
 
             wx.onMenuShareAppMessage(
                 {
@@ -48,8 +70,6 @@ if(wx_data && wx_data.ticket)
                     console.log('wx failed:'+res.errMsg);
                 }
             );
-
-            wxShareAppMsg();
 
         });
     }
