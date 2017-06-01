@@ -64,6 +64,25 @@ if(wx_data && wx_data.ticket)
                 }
             );
 
+            wx.onMenuShareTimeline(
+                {
+                    title:"极品斗牛",
+                    desc:"朋友圈里玩疯了的桌面扑克游戏",
+                    link:"http://huyukongjian.cn/auth_douniu",
+                    imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
+                    type:null,
+                    dataUrl:null,
+                    success:function()
+                    {
+                        return;
+                    },
+                    cacel:function()
+                    {
+                        return;
+                    }
+                }
+            );
+
             wx.error(
                 function(res)
                 {
