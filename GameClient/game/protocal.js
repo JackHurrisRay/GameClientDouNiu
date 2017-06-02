@@ -197,10 +197,10 @@ const ENUM_MSG_GAME_PROTOCAL =
 {
     ////////
     "EGP_C2S_APPLICATE_LEAVE":EGP_START__GAME + 4,            //申请离开房间
-    "EGP_S2C_ALL_APPLICATE_LEAVE":EGP_START__GAME + 5,            //
+    "EGP_S2C_ALL_APPLICATE_LEAVE":EGP_START__GAME + 5,       //
 
     ////////
-    "EGP_C2S_NEXT_AROUND":EGP_START__GAME + 8,            //开始下一盘游戏
+    "EGP_C2S_NEXT_AROUND":EGP_START__GAME + 8,                //开始下一盘游戏
     "EGP_S2C_NEXT_AROUND":EGP_START__GAME + 9,
 
     ////////
@@ -215,4 +215,7 @@ const ENUM_MSG_GAME_PROTOCAL =
 
     "EGP_C2S_ADD_DOUBLE":EGP_START__GAME + 16,                //加倍
     "EGP_S2C_ALL_ADD_DOUBLE":EGP_START__GAME + 17,
+
+    "EGP_C2S_GET_LASTRESULT":EGP_START__GAME + 100,          //获取上一局游戏的分数
+    "EGP_S2C_GET_LASTRESULT":EGP_START__GAME + 101,
 };

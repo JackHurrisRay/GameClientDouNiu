@@ -49,6 +49,56 @@ var sceneHall = cc.Scene.extend(
             _sptHallInfo.addChild(_scrollNews);
 
             ////////
+            var _button_lastResult = new uiTouchSprite(
+                null,null,
+                function(touch, event)
+                {
+                    ////////
+                    clientSystem.getInstance().getLastResult(
+                        function(_recvData)
+                        {
+                            cc.log('GET LAST RESULT DATA');
+
+                            if( _recvData )
+                            {
+                                var players = [];
+
+                                for( var i in _recvData )
+                                {
+                                    const _cellData = _recvData[i];
+
+                                    var player_data = {};
+
+                                    player_data.nickname = _cellData.player_nickname;
+                                    player_data.score = _cellData.total_score;
+                                    player_data.img_url = WX_IMG_PATH + _cellData.player_key;
+
+                                    players.push(player_data);
+                                }
+
+                                var _dlg_result = new dialogLastResult;
+                                sptBackground.addChild(_dlg_result);
+                                _dlg_result.show(players);
+
+                            }
+                            else
+                            {
+                                show_common_dialog("没有记录", "您至少要进行一局完整的游戏才会有游戏记录");
+                            }
+
+                            return;
+                        }
+                    );
+                }
+            );
+
+            var _frame_lastresult = cc.spriteFrameCache.getSpriteFrame("button_getlastresult.png");
+            _button_lastResult.initWithSpriteFrame(_frame_lastresult);
+            _button_lastResult.setAnchorPoint(0.0, 0.0);
+            _button_lastResult.setPosition(520, 56.0);
+            sptBackground.addChild(_button_lastResult);
+
+            ////////
             var _framePlayerInfo = cc.spriteFrameCache.getSpriteFrame("main_player_info.png");
             var _sptPlayerInfo = cc.Sprite.createWithSpriteFrame(_framePlayerInfo);
 
@@ -96,7 +146,7 @@ var sceneHall = cc.Scene.extend(
                     null,null,
                     function(touch, event)
                     {
-                        show_common_dialog("钻石充值","钻石充值请联系运营商，请关注微信公众号");
+                        show_common_dialog("钻石充值","钻石充值请联系运营商，微信号d13910159721，QQ495283985，手机13910159721，联系人：魏经理");
                     }
                 );
 

@@ -76,7 +76,7 @@ var PROTOCAL_MSG =
         {
             "vip":0
         }
-    }
+    },
 
     ////////
 
@@ -114,7 +114,12 @@ var PROTOCAL_GAME_MSG =
         "data":{
             "flag":0
         }
-    }
+    },
+    "MSG_C2S_GET_LASTRESULT":
+    {
+        "protocal":ENUM_MSG_GAME_PROTOCAL.EGP_C2S_GET_LASTRESULT,
+        "data":{}
+    },
 
 };
 

@@ -382,6 +382,13 @@ var clientSystem =
                         _msg.data.flag = _flag;
                         SEND_MSG(_msg);
                     },
+                    getLastResult:function(_callback)
+                    {
+                        this.CALLBACK_GETLASTRESULT = _callback;
+
+                        var _msg = PROTOCAL_GAME_MSG.MSG_C2S_GET_LASTRESULT;
+                        SEND_MSG(_msg);
+                    },
                     recv:function(data)
                     {
                         if( data.error != 0 )
@@ -1154,6 +1161,38 @@ var clientSystem =
 
                                     break;
                                 }
+                                case ENUM_MSG_GAME_PROTOCAL.EGP_S2C_GET_LASTRESULT:
+                                {
+                                    const _exdata = _msgData["extern_data"];
+
+                                    cc.log("LAST RESULT:" + _exdata);
+
+                                    if( this.CALLBACK_GETLASTRESULT )
+                                    {
+                                        var _obj = null;
+                                        var _recvData = null;
+
+                                        try{
+                                            _obj = JSON.parse(_exdata);
+                                        }
+                                        catch (e)
+                                        {
+
+                                        }
+
+                                        if( _obj && _obj.player )
+                                        {
+                                            _recvData = _obj;
+                                        }
+
+                                        this.CALLBACK_GETLASTRESULT(_recvData);
+                                        this.CALLBACK_GETLASTRESULT = null;
+                                    }
+
+                                    break;
+                                }
+
+                                ////////
                             }
                         }
                     },
