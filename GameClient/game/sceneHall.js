@@ -101,9 +101,9 @@ var sceneHall = cc.Scene.extend(
 
             var _frame_lastresult = cc.spriteFrameCache.getSpriteFrame("button_getlastresult.png");
             _button_lastResult.initWithSpriteFrame(_frame_lastresult);
-            _button_lastResult.setAnchorPoint(1.0, 1.0);
-            _button_lastResult.setScale(0.75);
-            _button_lastResult.setPosition(SCREEN_SIZE.WIDTH - 16, SCREEN_SIZE.HEIGHT-16-102);
+            _button_lastResult.setAnchorPoint(0.5, 0.0);
+            //_button_lastResult.setScale(0.75);
+            _button_lastResult.setPosition(SCREEN_SIZE.WIDTH/2, 48);
             sptBackground.addChild(_button_lastResult);
 
             ////////
