@@ -33,7 +33,7 @@ var sceneHall = cc.Scene.extend(
             var _frame_hall_info = cc.spriteFrameCache.getSpriteFrame("hall_info.png");
             var _sptHallInfo = cc.Sprite.createWithSpriteFrame(_frame_hall_info);
             _sptHallInfo.setAnchorPoint(0.0, 0.0);
-            _sptHallInfo.setPosition(16, 56);
+            _sptHallInfo.setPosition(16, 48);
             sptBackground.addChild(_sptHallInfo);
 
             var _sptNews = cc.Sprite.create(SOURCE_PATH + "news/hall_info_data.png");
@@ -61,11 +61,18 @@ var sceneHall = cc.Scene.extend(
 
                             if( _recvData )
                             {
-                                var players = [];
+                                const _cellPlayers = _recvData.player;
 
-                                for( var i in _recvData )
+                                var players = [];
+                                var result = {};
+                                result.players = players;
+                                result.room_id = _recvData.room_rand_key;
+                                result.around = _recvData.room_current_around;
+
+                                for( var i in _cellPlayers )
                                 {
-                                    const _cellData = _recvData[i];
+                                    const _cellData = _cellPlayers[i];
+                                    cc.log("player data:" + JSON.stringify(_cellData));
 
                                     var player_data = {};
 
@@ -76,9 +83,9 @@ var sceneHall = cc.Scene.extend(
                                     players.push(player_data);
                                 }
 
-                                var _dlg_result = new dialogLastResult;
-                                sptBackground.addChild(_dlg_result);
-                                _dlg_result.show(players);
+                                var _dlg_result = new dialogLastResult();
+                                cc._NoticeficationNode.addChild(_dlg_result);
+                                _dlg_result.show(true, result);
 
                             }
                             else
@@ -94,8 +101,9 @@ var sceneHall = cc.Scene.extend(
 
             var _frame_lastresult = cc.spriteFrameCache.getSpriteFrame("button_getlastresult.png");
             _button_lastResult.initWithSpriteFrame(_frame_lastresult);
-            _button_lastResult.setAnchorPoint(0.0, 0.0);
-            _button_lastResult.setPosition(520, 56.0);
+            _button_lastResult.setAnchorPoint(1.0, 1.0);
+            _button_lastResult.setScale(0.75);
+            _button_lastResult.setPosition(SCREEN_SIZE.WIDTH - 16, SCREEN_SIZE.HEIGHT-16-102);
             sptBackground.addChild(_button_lastResult);
 
             ////////
@@ -321,7 +329,7 @@ var sceneHall = cc.Scene.extend(
 
                 _sptButton[i].setScale(0.5, 0.5);
                 _sptButton[i].setAnchorPoint(1.0,0.0);
-                _sptButton[i].setPosition(SCREEN_SIZE.WIDTH - 64, 64 + ( 16 + 160) * j);
+                _sptButton[i].setPosition(SCREEN_SIZE.WIDTH - 64, 56 + ( 16 + 160) * j);
                 sptBackground.addChild(_sptButton[i]);
             }
         },

@@ -9,31 +9,28 @@ var optionDialog =
             ctor: function () {
                 ////
                 this._super();
+                var SELF = this;
 
                 cc.spriteFrameCache.addSpriteFrames(res_room.ROOM_PLIST, res_room.ROOM_PNG);
                 var _frameButton = cc.spriteFrameCache.getSpriteFrame("button_confirm.png");
-                var _sptButton = cc.Sprite.createWithSpriteFrame(_frameButton);
-
-                _sptButton.setPosition(SCREEN_SIZE.WIDTH / 2, 240);
-                _sptButton.setScale(0.6);
-
-                var SELF = this;
-
-                this.BACK_GROUND = new uiTouchSprite(
-                    function(touch, event) {
-                        const _pos = touch.getLocation();
-
-                        var _locationInConfirm = _sptButton.convertToNodeSpace(_pos);
-                        var _s = _sptButton.getContentSize();
-                        var _rect = cc.rect(0, 0, _s.width, _s.height);
-
-                        if (cc.rectContainsPoint(_rect, _locationInConfirm))
-                        {
+                var _sptButton =
+                    new uiTouchSprite(
+                        null,null,
+                        function(touch, event) {
+                            _sptButton.unlock();
                             cc.log("touch confirm");
                             SELF.close();
                         }
-                    }
-                );
+                    );
+
+                _sptButton.initWithSpriteFrame(_frameButton);
+                _sptButton.setPosition(SCREEN_SIZE.WIDTH / 2, 240);
+                _sptButton.setScale(0.6);
+
+                this.BUTTON_CONFIRM = _sptButton;
+
+                ////////
+                this.BACK_GROUND = cc.Sprite.create();
 
                 this.size = cc.director.getWinSize();
                 this.BACK_GROUND.initWithFile(res_common.COMMON_DIALOG);
@@ -85,7 +82,9 @@ var optionDialog =
             show: function () {
 
                 ////
-                UI_TOUCH_END_SWITCH = false;
+                this.BUTTON_CONFIRM.lock();
+
+                ////
                 this.setVisible(true);
 
                 ////
@@ -95,7 +94,6 @@ var optionDialog =
             },
             close: function () {
                 this.setVisible(false);
-                UI_TOUCH_END_SWITCH = true;
             }
         }
     );

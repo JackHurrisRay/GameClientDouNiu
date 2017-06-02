@@ -87,6 +87,7 @@ const res_jsgame =
         SOURCE_PATH + "game/sceneRoom.js",
 
         SOURCE_PATH + "game/totalResultDialog.js",
+        SOURCE_PATH + "game/dialogLastResult.js",
         SOURCE_PATH + "game/applicateLeaveDialog.js",
     ];
 

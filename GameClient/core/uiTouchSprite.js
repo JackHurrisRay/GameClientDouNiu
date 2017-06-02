@@ -2,6 +2,7 @@
  * Created by Jack.L on 2017/2/23 0023.
  */
 var UI_TOUCH_END_SWITCH = true;
+var UI_TOUCH_MUTEX = false;
 
 function CHECK_VISIBLE(node)
 {
@@ -29,6 +30,17 @@ var uiTouchSprite = cc.Sprite.extend(
     {
         TARGET:null,
         TOUCH_SOUND:res_sound.touch,
+        MUTEX:false,
+        lock:function()
+        {
+            this.MUTEX = true;
+            UI_TOUCH_MUTEX = true;
+        },
+        unlock:function()
+        {
+            this.MUTEX = false;
+            UI_TOUCH_MUTEX = false;
+        },
         setTarget:function(target)
         {
             this.TARGET = target;
@@ -52,6 +64,11 @@ var uiTouchSprite = cc.Sprite.extend(
                     ////////
                     onTouchBegan: function (touch, event) {
 
+                        if(!SELF.MUTEX&&UI_TOUCH_MUTEX)
+                        {
+                            return false;
+                        }
+
                         var target = event.getCurrentTarget();
 
                         if( !CHECK_VISIBLE(target) )
@@ -74,7 +91,6 @@ var uiTouchSprite = cc.Sprite.extend(
                             var touchPos = touch.getLocation();
                             //touchPos.x = touchPos.x / 2.0;
                             //touchPos.y = touchPos.y * SCREEN_SIZE.HEIGHT / 360;
-
 
                             var locationInNode = target.convertToNodeSpace(touchPos);
 

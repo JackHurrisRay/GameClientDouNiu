@@ -4,14 +4,27 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>button_getlastresult.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{828,230},{172,78}}</string>
+                <key>offset</key>
+                <string>{0,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{4,2},{172,78}}</string>
+                <key>sourceSize</key>
+                <string>{180,84}</string>
+            </dict>
             <key>hall_info.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,828},{474,536}}</string>
+                <string>{{2,800},{474,536}}</string>
                 <key>offset</key>
                 <string>{3,-2}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{6,4},{474,536}}</string>
                 <key>sourceSize</key>
@@ -20,7 +33,7 @@
             <key>icon_add.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,1548},{176,176}}</string>
+                <string>{{722,800},{176,176}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +46,7 @@
             <key>icon_diamond.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,1366},{180,180}}</string>
+                <string>{{540,800},{180,180}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +59,7 @@
             <key>icon_option.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{488,1366},{166,168}}</string>
+                <string>{{540,982},{166,168}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -63,7 +76,7 @@
                 <key>offset</key>
                 <string>{0,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,4},{960,188}}</string>
                 <key>sourceSize</key>
@@ -72,11 +85,11 @@
             <key>ui_main_button_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{496,2},{824,302}}</string>
+                <string>{{2,496},{824,302}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{8,10},{824,302}}</string>
                 <key>sourceSize</key>
@@ -85,11 +98,11 @@
             <key>ui_main_button_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{192,2},{824,302}}</string>
+                <string>{{2,192},{824,302}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{8,10},{824,302}}</string>
                 <key>sourceSize</key>
@@ -98,7 +111,7 @@
             <key>ui_main_button_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,964},{824,302}}</string>
+                <string>{{964,2},{824,302}}</string>
                 <key>offset</key>
                 <string>{0,-1}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>vip.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{192,828},{79,36}}</string>
+                <string>{{828,192},{79,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -129,9 +142,9 @@
             <key>realTextureFileName</key>
             <string>ui_hall.png</string>
             <key>size</key>
-            <string>{800,1790}</string>
+            <string>{1276,1276}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d456302e94fd2125ba9df29686983895:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:92cb04ab014eb629c8e642dbc8515762:1/1$</string>
             <key>textureFileName</key>
             <string>ui_hall.png</string>
         </dict>

@@ -130,6 +130,7 @@ var dialogTotalResult = cc.Sprite.extend(
                 new uiTouchSprite(
                     null,null,
                     function (touch, event) {
+                        _buttonConfirm.unlock();
                         var _trans = new cc.TransitionCrossFade(1.0, new sceneHall());
                         cc.director.runScene(_trans);
                     }
@@ -139,6 +140,8 @@ var dialogTotalResult = cc.Sprite.extend(
             _buttonConfirm.setPosition(this.size.width/2, 64.0);
             _buttonConfirm.setScale(0.625, 0.625);
             this.addChild(_buttonConfirm);
+
+            this.BUTTON_CONFIRM = _buttonConfirm;
 
             ////////
             this.show(false);
@@ -161,6 +164,7 @@ var dialogTotalResult = cc.Sprite.extend(
                 }
 
                 this.setVisible(true);
+                this.BUTTON_CONFIRM.lock();
             }
             else
             {

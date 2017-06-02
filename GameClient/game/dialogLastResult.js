@@ -8,6 +8,8 @@ var dialogLastResult = cc.Sprite.extend(
         size:{width:SCREEN_SIZE.WIDTH, height:SCREEN_SIZE.HEIGHT},
         ctor:function()
         {
+            ////////
+            var SELF = this;
             this._super();
             this.initWithFile(res_common.COMMON_BACK);
             this.setPosition(this.size.width/2, this.size.height/2);
@@ -17,6 +19,8 @@ var dialogLastResult = cc.Sprite.extend(
             var _title = cc.LabelTTF.create("最近一次游戏成绩", FONT_NAME.FONT_YOUYUAN, 72);
             _title.setPosition(this.size.width/2, this.size.height - 64);
             this.addChild(_title);
+
+            this.TITLE = _title;
 
             ////////
             const _heightBase = 200;
@@ -82,6 +86,9 @@ var dialogLastResult = cc.Sprite.extend(
                     function(player_data)
                     {
                         ////////
+                        cc.log("BANNER SET PLAYER DATA:" + JSON.stringify(player_data));
+
+                        ////////
                         this.PLAYER_NAME.setString(player_data.nickname);
                         this.PLAYER_NAME.setVisible(true);
 
@@ -125,16 +132,27 @@ var dialogLastResult = cc.Sprite.extend(
             }
 
             ////////
-            var SELF = this;
             var _frame_buttonConfirm = cc.spriteFrameCache.getSpriteFrame("button_confirm.png");
-            var _buttonConfirm =
+
+            ////////
+            var _buttonConfirm = null;
+
+            var _callback_end =
+                function(touch, event)
+                {
+                    SELF.removeFromParentAndCleanup(true);
+                    _buttonConfirm.unlock();
+                };
+
+
+            _buttonConfirm =
                 new uiTouchSprite(
                     null,null,
-                    function (touch, event) {
-                        SELF.removeFromParentAndCleanup(true);
-                        UI_TOUCH_END_SWITCH = true;
-                    }
+                    _callback_end,null,
+                    _buttonConfirm
                 );
+
+            this.BUTTON_CONFIRM = _buttonConfirm;
 
             _buttonConfirm.initWithSpriteFrame(_frame_buttonConfirm);
             _buttonConfirm.setPosition(this.size.width/2, 64.0);
@@ -148,12 +166,12 @@ var dialogLastResult = cc.Sprite.extend(
         {
             this.BANNER_ARRAY[pos].SET_PLAYER_DATA(player_data);
         },
-        show:function(players)
+        show:function(_isShow, _resultData)
         {
             if( _isShow )
             {
                 ////////
-                var PLAYERS = players;
+                var PLAYERS = _resultData.players;
 
                 for( var i in PLAYERS )
                 {
@@ -161,8 +179,9 @@ var dialogLastResult = cc.Sprite.extend(
                     this.setPlayerData(_player, i);
                 }
 
+                this.TITLE.setString("近次成绩(房间:"+_resultData.room_id.toString() + "/" + _resultData.around.toString() + "局)");
                 this.setVisible(true);
-                UI_TOUCH_END_SWITCH = false;
+                this.BUTTON_CONFIRM.lock();
             }
             else
             {
