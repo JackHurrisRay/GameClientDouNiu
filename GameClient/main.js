@@ -135,10 +135,4 @@ window.onload = function(){
     {
         document.getElementById('switchCcreen').style.display = 'block';
     }
-
-    //cc.game.run("gameCanvas");
-
-    //var GameContainerId = document.getElementById("Cocos2dGameContainer");
-    //GameContainerId.style.width = "100%";
-    //GameContainerId.style.height = "100%";
 };

@@ -67,7 +67,8 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
 
             if( !gameRunning )
             {
-                window.location.reload();
+                window.location.href = window.location.href=window.location.href + "?game=1";
+                //window.location.reload();
             }
 
             // 横屏状态！

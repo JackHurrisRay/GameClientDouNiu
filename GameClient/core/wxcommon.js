@@ -49,7 +49,7 @@ if(wx_data && wx_data.ticket)
                 {
                     title:"极品斗牛",
                     desc:"最好玩的桌面扑克游戏",
-                    link:"http://huyukongjian.cn/auth_douniu?game=1",
+                    link:"http://huyukongjian.cn/auth?game=1",
                     imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
                     type:null,
                     dataUrl:null,
@@ -67,7 +67,7 @@ if(wx_data && wx_data.ticket)
             wx.onMenuShareTimeline(
                 {
                     title:"极品斗牛--朋友圈里玩疯的桌面扑克，居家旅行必备，勿需下载，打开既玩",
-                    link:"http://huyukongjian.cn/auth_douniu?game=1",
+                    link:"http://huyukongjian.cn/auth?game=1",
                     imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
                     type:null,
                     dataUrl:null,
