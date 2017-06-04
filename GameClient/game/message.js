@@ -69,6 +69,14 @@ var PROTOCAL_MSG =
         "protocal":ENUM_MSG_PROTOCAL.EGP_C2S_LEAVE_ROOM,
         "data":{}
     },
+    "MSG_C2S_FINDINVITER_INROOM":
+    {
+        "protocal":ENUM_MSG_PROTOCAL.EGP_C2S_FINDINVITER_INROOM,
+        "data":
+        {
+            "player_key":""
+        }
+    },
     "MSG_C2S_PAY_VIP":
     {
         "protocal":ENUM_MSG_PROTOCAL.EGP_C2S_PAY_VIP,

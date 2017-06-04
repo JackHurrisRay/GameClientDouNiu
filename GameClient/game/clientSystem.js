@@ -326,6 +326,22 @@ var clientSystem =
                         var _msg = PROTOCAL_MSG.MSG_C2S_REQUEST_ROOMLIST;
                         SEND_MSG(_msg);
                     },
+                    visit_inviter:function(callback)
+                    {
+                        if( wx_data && wx_data.inviter )
+                        {
+                            this.SELF_PLAYER.game_room_status   = ENUM_GAME_PLAYER_STATUS.EPS_NONE;
+                            this.SELF_PLAYER.game_player_status = ENUM_GAME_PLAYER_STATUS.EPS_NONE;
+                            this.OTHER_PLAYERS = {};
+
+                            this.CALLBACK_ENTER_ROOM = callback;
+
+                            var _msg = PROTOCAL_MSG.MSG_C2S_FINDINVITER_INROOM;
+                            _msg.data.player_key = wx_data.inviter;
+
+                            SEND_MSG(_msg);
+                        }
+                    },
                     pay_vip:function(vipLevel, callback)
                     {
                         this.CALLBACK_PAYVIP = callback;
@@ -511,6 +527,17 @@ var clientSystem =
                                     {
                                         var _trans = new cc.TransitionCrossFade(1,new sceneHall());
                                         cc.director.runScene(_trans);
+
+                                        if( wx_data )
+                                        {
+                                            clientSystem.getInstance().visit_inviter(
+                                                function()
+                                                {
+                                                    var _trans = new cc.TransitionCrossFade(1.0, new sceneRoom());
+                                                    cc.director.runScene(_trans);
+                                                }
+                                            );
+                                        }
                                     }
 
                                     this.ISCONN = true;
@@ -634,9 +661,6 @@ var clientSystem =
 
                                         ////////
                                         TDMissionBegin();
-
-                                        ////////
-                                        //resetWxCommon(_player.room_id);
                                     }
 
                                     if( _player != null )
@@ -1285,14 +1309,18 @@ var clientSystem =
                         {
                             case 301:
                             {
-                                var _error_room = INFO_ROOM_ERROR[ex];
-
-                                if( _error_room == null )
+                                if( ex != "9999")
                                 {
-                                    _error_room = "房间未知错误";
+                                    var _error_room = INFO_ROOM_ERROR[ex];
+
+                                    if( _error_room == null )
+                                    {
+                                        _error_room = "房间未知错误";
+                                    }
+
+                                    show_common_dialog(_error_info, _error_room);
                                 }
 
-                                show_common_dialog(_error_info, _error_room);
                                 break;
                             }
                             case 501:

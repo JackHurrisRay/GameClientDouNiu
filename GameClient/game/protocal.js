@@ -122,6 +122,7 @@ const ENUM_ROOM_ERROR =
     "ERE_ROOM_LIMITRIGHT":112,                      //房间权限问题
     "ERE_ROOM_WRONG_STATUS":113,                    //房间错误的状态
     "ERE_ROOM_MAX_COUNT_LIMITED":114,              //开房数目收到限制
+    "ERE_ROOM_UNKNOWN_THROW":9999                   //不处理，直接忽略掉的消息
 };
 
 const INFO_ROOM_ERROR =
@@ -140,7 +141,8 @@ const INFO_ROOM_ERROR =
     "111":"密码错误",
     "112":"房间权限发生错误",
     "113":"房间状态错误",
-    "114":"所开房间数目已经达到上限，无法再创建房间"
+    "114":"所开房间数目已经达到上限，无法再创建房间",
+    "9999":""
 };
 
 
@@ -188,6 +190,10 @@ const ENUM_MSG_PROTOCAL =
     ////
     "EGP_C2S_REQUEST_ROOMLIST":EGP_START__LOGIN + 40,         //房主获取所开房间信息
     "EGP_S2C_REQUEST_ROOMLIST":EGP_START__LOGIN + 41,
+
+    ////
+    "EGP_C2S_FINDINVITER_INROOM":EGP_START__LOGIN + 52,
+    "EGP_S2C_FINDINVITER_INROOM":EGP_START__LOGIN + 53,
 
     "EGP_C2S_PAY_VIP":EGP_START__LOGIN + 100,
     "EGP_S2C_PAY_VIP":EGP_START__LOGIN + 101,
