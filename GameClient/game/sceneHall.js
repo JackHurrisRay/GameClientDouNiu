@@ -8,6 +8,7 @@ var sceneHall = cc.Scene.extend(
         ctor: function () {
 
             gameTimer.setTime(5000);
+            initWxCommon();
 
             ////
             this._super();

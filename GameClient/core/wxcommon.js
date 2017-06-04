@@ -95,6 +95,91 @@ if(wx_data && wx_data.ticket)
     initWxCommon();
 }
 
+function resetWxCommon(room_id)
+{
+    wx.config(wx_ticket);
+
+    wx.ready(function(){
+
+        wx.checkJsApi(
+            {
+                jsApiList:wx_ticket.jsApiList,
+                success:function(res)
+                {
+                    console.log(JSON.stringify(res));
+                }
+            }
+        );
+
+        wx.hideAllNonBaseMenuItem();
+
+        wx.hideMenuItems({
+            menuList:[
+                'menuItem:share:weiboApp',
+                'menuItem:favorite',
+                'menuItem:editTag',
+                'menuItem:delete',
+                'menuItem:openWithSafari',
+                'menuItem:share:email',
+                'menuItem:share:brand',
+            ]
+        });
+
+        wx.showMenuItems({
+            menuList: [
+                'menuItem:share:appMessage',
+                'menuItem:share:timeline', // 分享到朋友圈
+                'menuItem:copyUrl' // 复制链接
+            ]
+        });
+
+        wx.onMenuShareAppMessage(
+            {
+                title:"极品斗牛",
+                desc:"最好玩的桌面扑克游戏",
+                link:"http://huyukongjian.cn/auth?game=1" + "&room=" + room_id.toString(),
+                imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
+                type:null,
+                dataUrl:null,
+                success:function()
+                {
+                    return;
+                },
+                cacel:function()
+                {
+                    return;
+                }
+            }
+        );
+
+        wx.onMenuShareTimeline(
+            {
+                title:"极品斗牛--朋友圈里玩疯的桌面扑克，居家旅行必备，勿需下载，打开既玩",
+                link:"http://huyukongjian.cn/auth?game=1",
+                imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
+                type:null,
+                dataUrl:null,
+                success:function()
+                {
+                    return;
+                },
+                cacel:function()
+                {
+                    return;
+                }
+            }
+        );
+
+        wx.error(
+            function(res)
+            {
+                console.log('wx failed:'+res.errMsg);
+            }
+        );
+
+    });
+}
+
 function wxShareAppMsg()
 {
     wx.showMenuItems({

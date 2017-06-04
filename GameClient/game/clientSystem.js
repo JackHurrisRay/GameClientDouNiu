@@ -631,9 +631,12 @@ var clientSystem =
                                         var _players_Array = JSON.parse(_room_players_info);
 
                                         this.refresh_other_players(_players_Array);
+
                                         ////////
                                         TDMissionBegin();
 
+                                        ////////
+                                        resetWxCommon(_player.room_id);
                                     }
 
                                     if( _player != null )
