@@ -636,7 +636,7 @@ var clientSystem =
                                         TDMissionBegin();
 
                                         ////////
-                                        resetWxCommon(_player.room_id);
+                                        //resetWxCommon(_player.room_id);
                                     }
 
                                     if( _player != null )

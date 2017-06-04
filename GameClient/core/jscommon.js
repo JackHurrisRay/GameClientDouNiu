@@ -55,6 +55,9 @@ function runGameInstance()
     }
 }
 
+const _strServerContent =
+    BASE64.encoder(JSON.stringify(server_content));
+
 window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
 
         if (window.orientation === 180 || window.orientation === 0) {
@@ -67,7 +70,7 @@ window.addEventListener("onorientationchange" in window ? "orientationchange" : 
 
             if( !gameRunning )
             {
-                window.location.href = window.location.href=window.location.href + "?game=1";
+                window.location.href = window.location.href=window.location.href + "?content=" + _strServerContent;
                 //window.location.reload();
             }
 
