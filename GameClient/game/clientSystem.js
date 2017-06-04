@@ -528,16 +528,22 @@ var clientSystem =
                                         var _trans = new cc.TransitionCrossFade(1,new sceneHall());
                                         cc.director.runScene(_trans);
 
-                                        if( wx_data )
-                                        {
-                                            clientSystem.getInstance().visit_inviter(
-                                                function()
+                                        setTimeout(
+                                            function()
+                                            {
+                                                if( wx_data )
                                                 {
-                                                    var _trans = new cc.TransitionCrossFade(1.0, new sceneRoom());
-                                                    cc.director.runScene(_trans);
+                                                    clientSystem.getInstance().visit_inviter(
+                                                        function()
+                                                        {
+                                                            var _trans = new cc.TransitionCrossFade(1.0, new sceneRoom());
+                                                            cc.director.runScene(_trans);
+                                                        }
+                                                    );
                                                 }
-                                            );
-                                        }
+                                            },
+                                            3000
+                                        );
                                     }
 
                                     this.ISCONN = true;

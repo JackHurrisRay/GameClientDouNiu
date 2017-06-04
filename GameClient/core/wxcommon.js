@@ -8,6 +8,21 @@ var server_content =
     'inviter':""
 };
 
+function getWxContent()
+{
+    var _result = null;
+    if( wx_content && typeof wx_content == 'string')
+    {
+        var _base64DataInfo1  = BASE64.decoder(wx_content);
+        var _base64DataInfo2 = transAscToStringArray(_base64DataInfo1);
+        _result = JSON.parse(_base64DataInfo2);
+    }
+
+    return _result;
+}
+
+const wx_data = getWxContent();
+
 if(wx_data)
 {
     server_content.inviter = wx_data.ID;
