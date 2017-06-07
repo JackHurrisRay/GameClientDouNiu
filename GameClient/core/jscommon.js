@@ -123,7 +123,7 @@ function extendDeep(parent, child) {
                 child[i] = (Object.prototype.toString.call(parent[i]) === "[object Array]") ? [] : {};
 
                 //递归调用extend
-                extendDeep(parent[i], child[i]);
+                this.extendDeep(parent[i], child[i]);
             } else {
                 child[i] = parent[i];
             }
