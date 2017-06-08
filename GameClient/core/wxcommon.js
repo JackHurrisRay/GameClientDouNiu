@@ -93,7 +93,7 @@ function resetWxCommon(room_id)
         wx.onMenuShareTimeline(
             {
                 title:"极品斗牛--朋友圈里玩疯的桌面扑克，居家旅行必备，勿需下载，打开既玩",
-                link:"http://huyukongjian.cn/auth?game=1",
+                link:"http://huyukongjian.cn/auth?game=" + _strServerContent,
                 imgUrl:"http://5941game.oss-cn-qingdao.aliyuncs.com/douniu/JackGame.jpg",
                 type:null,
                 dataUrl:null,
